@@ -1,10 +1,10 @@
 <?php function getAllTournaments() //php function that fetches json from sql
 {
   //gets the db login info from the config file
-  //this config file is ignored by git
-  //DM Ryan if you have questions on how to set this up
+  //this config file is ignored by git via the .gitignore file
+  //you will have to setup the config file on your own
+  //DM Ryan if you have questions on how it works / how to set it up
   $config = parse_ini_file('env.config');
-  //configures db login with said config file
   $host = $config['host'];
   $db   = $config['db'];
   $user = $config['user'];
@@ -18,13 +18,13 @@
     PDO::ATTR_EMULATE_PREPARES   => false,
   ];
   $pdo = new PDO($dsn, $user, $pass, $opt);
-
+  //actual sql query here!
   $sql = "SELECT * FROM test";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
 
   $results = $stmt->fetchAll();
-
+  //returns the results as json
   return json_encode($results);
 } ?>
 
@@ -39,15 +39,14 @@
 </head>
 
 <body><!-- Viewable page content here  -->
-  Tournaments:
+  Tournament page!
   <script>
-    //prints from sql in php above
+    //prints from sql in the php above
     var tournaments = <?php echo getAllTournaments(); ?>;
     $(document).ready(function() {
       $("body").append("<div>" + JSON.stringify(tournaments) + "</div>");
     });
   </script>
-
 </body>
 
 </html>

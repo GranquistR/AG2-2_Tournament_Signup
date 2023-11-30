@@ -19,7 +19,7 @@
   ];
   $pdo = new PDO($dsn, $user, $pass, $opt);
   //actual sql query here!
-  $sql = "SELECT * FROM test";
+  $sql = "SELECT * FROM tournament";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
 
@@ -47,7 +47,8 @@ if ($storedUsername) {
   <title>Tournaments</title>
   <script src="/Libraries/jquery-3.7.1.js"></script>
   <style>
-    th, td {
+    th,
+    td {
       text-align: center;
     }
   </style>
@@ -60,32 +61,6 @@ if ($storedUsername) {
   Tournament page!
   <h1>Tournaments</h1>
   <h2>Please select a tournament</h2>
-  <!-- <div class="grid-container">
-    <div class="grid-item">
-      <table class="testTable">
-        <tr>
-          <td><label for="tSearch">Search:</label></td>
-          <td><input type="text" id="tSearch" name="search"></td>
-        </tr>
-      </table>
-    </div>
-    <div class = "grid-item">
-      <table style = "width:50%", class = "testTable">
-        <tr>
-          <th>Tournament Name</th>
-          <th>Description</th>
-          <th>Spots Available</th>
-          <th>Select</th>
-        </tr>
-        <tr>
-          <td>Mortal Kombat</td>
-          <td>Extremely family-friendly tournament where you become friends with everyone</td>
-          <td>3</td>
-          <td><input type="radio" id="mk" name="tournament[]" value="Mortal Kombat"></td>
-        </tr>
-      </table>
-    </div>
-  </div> -->
   <!-- <script>
     //prints from sql in the php above
     var tournaments = <?php echo getAllTournaments(); ?>;
@@ -106,6 +81,8 @@ if ($storedUsername) {
         }]
       });
     });
+    var tournaments = <?php echo getAllTournaments(); ?>;
+    console.log(tournaments);
   </script>
   <table id="TournamentDatatable" class="display">
     <thead>

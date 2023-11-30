@@ -36,6 +36,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tournaments</title>
   <script src="/Libraries/jquery-3.7.1.js"></script>
+  <style>
+    th, td {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body><!-- Viewable page content here  -->
@@ -52,7 +57,7 @@
       </table>
     </div>
     <div class = "grid-item">
-      <table class = "testTable">
+      <table style = "width:50%", class = "testTable">
         <tr>
           <th>Tournament Name</th>
           <th>Description</th>

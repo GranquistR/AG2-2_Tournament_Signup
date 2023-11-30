@@ -26,7 +26,17 @@
   $results = $stmt->fetchAll();
   //returns the results as json
   return json_encode($results);
-} ?>
+}
+
+  $storedUsername = "<script>document.write(localStorage.getItem('enteredUsername'));</script>";
+  if ($storedUsername) {
+    echo '<p>Welcome, ' . $storedUsername . '!</p>';
+    } else {
+      // Redirect back to the login page if the username is not found
+      header("Location: login.html");
+      exit();
+    }
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -49,5 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Login">
     </form>
 
+    <script src="storeUsername.js"></script>
+
 </body>
 </html>

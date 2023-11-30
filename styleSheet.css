@@ -1,0 +1,30 @@
+title{
+  color: white;
+}
+
+body {
+  background-color: RGB(48, 48, 48);
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+p {
+  color: red;
+  padding: 30px;
+}
+
+table{
+  border: 1 px solid;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td{
+    color: white;
+}

@@ -46,6 +46,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tournaments</title>
   <script src="/Libraries/jquery-3.7.1.js"></script>
+  <link rel="stylesheet" href="styleSheet.css">
   <style>
     th, td {
       text-align: center;

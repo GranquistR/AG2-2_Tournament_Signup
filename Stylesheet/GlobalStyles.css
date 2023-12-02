@@ -1,9 +1,15 @@
-title{
+title {
   color: white;
 }
 
 body {
-  background-color: RGB(48, 48, 48);
+  background-color: #0d1117;
+  margin: 0px;
+  font-family: monospace;
+}
+
+.content {
+  margin: 20px;
 }
 
 h1 {
@@ -19,12 +25,13 @@ p {
   padding: 30px;
 }
 
-table{
+table {
   border: 1 px solid;
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td{
-    color: white;
+th,
+td {
+  color: white;
 }

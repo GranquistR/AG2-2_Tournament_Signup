@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the entered username is in the list
     if (in_array($enteredUsername, $userData["usernames"])) {
         // Redirect to tournaments.php
+
         header("Location: tournaments.php");
         exit();
     } else {
@@ -26,11 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
 </head>
+
 <body>
 
     <h2>Login</h2>
@@ -49,7 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Login">
     </form>
 
-    <script src="storeUsername.js"></script>
+    <script src="Scripts\storeUsername.js"></script>
 
 </body>
+
 </html>

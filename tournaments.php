@@ -27,15 +27,6 @@
   //returns the results as json
   return json_encode($results);
 }
-
-$storedUsername = "<script>document.write(localStorage.getItem('enteredUsername'));</script>";
-if ($storedUsername) {
-  echo '<p>Welcome, ' . $storedUsername . '!</p>';
-} else {
-  // Redirect back to the login page if the username is not found
-  header("Location: login.html");
-  exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +37,22 @@ if ($storedUsername) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tournaments</title>
   <script src="/Libraries/jquery-3.7.1.js"></script>
-  <link rel="stylesheet" href="styleSheet.css">
+  <link rel="stylesheet" href="Stylesheet/GlobalStyles.css">
   <style>
     th,
     td {
       text-align: center;
+    }
+
+    .dataTables_length,
+    .dataTables_filter,
+    .dataTables_paginate {
+      color: white !important;
+    }
+
+    .dataTables_length option {
+      background-color: #1a1a1a;
+      color: white;
     }
   </style>
   <!-- Datatable Includes -->
@@ -59,62 +61,58 @@ if ($storedUsername) {
 </head>
 
 <body><!-- Viewable page content here  -->
-  Tournament page!
-  <h1>Tournaments</h1>
-  <h2>Please select a tournament</h2>
-  <!-- <script>
+
+  <!-- import header component -->
+  <?php include 'Components/header.php'; ?>
+
+  <div class="content">
+    <h1>Tournaments</h1>
+    <h2>Please select a tournament</h2>
+    <!-- <script>
     //prints from sql in the php above
     var tournaments = <?php echo getAllTournaments(); ?>;
     $(document).ready(function() {
       $("body").append("<div>" + JSON.stringify(tournaments) + "</div>");
     });
   </script> -->
-  <script>
-    //sets up the datatable
-    $(document).ready(function() {
-      $('#TournamentDatatable').DataTable({
-        "paging": true,
-        "info": false,
-        "searching": true,
-        "columnDefs": [{
-          "targets": [3],
-          "orderable": true
-        }]
+    <script>
+      //sets up the datatable
+      $(document).ready(function() {
+        $('#TournamentDatatable').DataTable({
+          "paging": true,
+          "info": false,
+          "searching": true,
+          "columnDefs": [{
+            "targets": [3],
+            "orderable": true
+          }]
+        });
       });
-    });
-    var tournaments = <?php echo getAllTournaments(); ?>;
-    console.log(tournaments);
-  </script>
-  <table id="TournamentDatatable" class="display">
-    <thead>
-      <tr>
-        <th>Tournament Name</th>
-        <th>Description</th>
-        <th>Spots Available</th>
-        <th>Select</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Row 1 Data 1</td>
-        <td>Row 1 Data 2</td>
-        <td>Row 1 Data 3</td>
-        <td>Row 1 Data 4</td>
-      </tr>
-      <tr>
-        <td>Row 2 Data 1</td>
-        <td>Row 2 Data 2</td>
-        <td>Row 2 Data 3</td>
-        <td>Row 2 Data 4</td>
-      </tr>
-      <tr>
-        <td>Test</td>
-        <td>Row 2 Data 2</td>
-        <td>Row 2 Data 3</td>
-        <td>Row 2 Data 4</td>
-      </tr>
-    </tbody>
-  </table>
+      var tournaments = <?php echo getAllTournaments(); ?>;
+      console.log(tournaments);
+    </script>
+    <table id="TournamentDatatable" class="display">
+      <thead>
+        <tr>
+          <th>Tournament Name</th>
+          <th>Description</th>
+          <th>Spots Available</th>
+          <th>Register</th>
+        </tr>
+      </thead>
+      <tbody>
+        <script>
+          //inserts the json response into the datatable
+          var tournaments = <?php echo getAllTournaments(); ?>;
+          console.log(tournaments);
+          for (var i = 0; i < tournaments.length; i++) {
+            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button>Register</button></td></tr>";
+            $("#TournamentDatatable tbody").append(tournamentRow);
+          }
+        </script>
+      </tbody>
+    </table>
+  </div>
 </body>
 
 </html>

@@ -1,11 +1,7 @@
-<?php function GetCurrentUser()
-{
-  //read enteredUsername from localStorage
-  $storedUsername = "<script>document.write(localStorage.getItem('enteredUsername'));</script>";
-  return $storedUsername;
-}
-?>
-
+<!-- This is a component that is intended to be insert into the body of a other html or php files -->
+<!-- It does not need it's own html,head,body tag as everything is inserted as is -->
+<!-- Super easy to insert at the top of your page with php (See tournaments.php for examples) -->
+<!-- that way no need to duplicate header code for each page :) -->
 
 <script>
   //Runs on page load
@@ -13,6 +9,7 @@
 
     //handles setting the username in the header or redirects to the login page
     if (localStorage.getItem('enteredUsername') == null) {
+      alert("You must login to view this page");
       window.location.href = "/";
     } else {
       $(".username").append(localStorage.getItem('enteredUsername'));

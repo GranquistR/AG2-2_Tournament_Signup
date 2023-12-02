@@ -68,15 +68,11 @@
   <div class="content">
     <h1>Tournaments</h1>
     <h2>Please select a tournament</h2>
-    <!-- <script>
-    //prints from sql in the php above
-    var tournaments = <?php echo getAllTournaments(); ?>;
-    $(document).ready(function() {
-      $("body").append("<div>" + JSON.stringify(tournaments) + "</div>");
-    });
-  </script> -->
+
+    <!-- DataTable -->
+
+    <!-- sets up the datatable and options -->
     <script>
-      //sets up the datatable
       $(document).ready(function() {
         $('#TournamentDatatable').DataTable({
           "paging": true,
@@ -88,9 +84,9 @@
           }]
         });
       });
-      var tournaments = <?php echo getAllTournaments(); ?>;
-      console.log(tournaments);
     </script>
+
+    <!-- creates the datatable template for the js to work with -->
     <table id="TournamentDatatable" class="display">
       <thead>
         <tr>

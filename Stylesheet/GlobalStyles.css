@@ -8,7 +8,7 @@ title, h1, h2, body, label, th, td {
 }
 
 p {
-  color: red;
+  color: white;
   font-family: sans-serif;
   padding: 30px;
 }
@@ -17,4 +17,17 @@ table{
   border: 2 px solid;
   width: 100%;
   border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+}
+
+.dataTables_length, .dataTables_filter, .dataTables_paginate {
+  color: white !important;
+}
+
+.dataTables_length option {
+  background-color: #1a1a1a;
+  color: white;
 }

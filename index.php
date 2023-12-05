@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the entered username is in the list
     if (in_array($enteredUsername, $userData["usernames"])) {
         // Redirect to tournaments.php
+
         header("Location: tournaments.php");
         exit();
     } else {
@@ -26,31 +27,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="styleSheet.css">
+    <link rel="stylesheet" href="Stylesheet/login.css">
+  
 </head>
+
 <body>
+    <div class="login-box">
 
-    <h2>Login</h2>
+        <h2>Login</h2>
 
-    <?php
-    // Display error message if any
-    if (isset($errorMessage)) {
-        echo '<p style="color: red;">' . $errorMessage . '</p>';
-    }
-    ?>
+        <form method="post" action="">
+            <div class="user-box">
+                <input autocomplete="false" type="text" id="username" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input type="password" id="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <input id="submitbutton" type="submit" value="Submit">
+            </input>
+            <p id=errmsg style="color: red"></p>
+            <?php
+            // Display error message if any
+            if (isset($errorMessage)) {
+                ?>
+                <p id=errmsg><?= $errorMessage ?></p>
+                <?php
+            }
+            ?>
+        </form>
+    </div>
 
-    <form method="post" action="">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <input type="submit" value="Login">
-    </form>
-
-    <script src="storeUsername.js"></script>
+    <script src="Scripts\storeUsername.js"></script>
 
 </body>
+
 </html>

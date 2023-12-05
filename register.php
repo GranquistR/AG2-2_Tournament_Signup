@@ -64,6 +64,8 @@
   <title>Document</title>
   <!-- jQuery include -->
   <script src="/Libraries/jquery-3.7.1.js"></script>
+  <link rel="stylesheet" href="Stylesheet/Tournament.css">
+
 </head>
 
 <body>
@@ -79,8 +81,13 @@
     });
   </script>
 
-  <a href="/tournaments.php">Back to Tournaments</a>
-  <h1 class="title">Registering for </h1>
+  <!-- import header component -->
+  <?php include 'Components/header.php'; ?>
+
+  <div class="content">
+    <a href="/tournaments.php">Back to Tournaments</a>
+    <h1 class="title">Registering for /h1>
+  </div>
 </body>
 
 </html>

@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form method="post" action="">
             <div class="user-box">
-                <input autocomplete="false" type="text" id="username" name="username" required>
+                <input autocomplete="new-password" type="text" id="username" name="username" required>
                 <label>Username</label>
             </div>
             <div class="user-box">

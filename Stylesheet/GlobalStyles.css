@@ -1,37 +1,33 @@
-title {
-  color: white;
+body {
+  background-color: RGB(48, 48, 48);
 }
 
-body {
-  background-color: #0d1117;
-  margin: 0px;
+title, h1, h2, body, label, th, td {
+  color: white;
   font-family: monospace;
 }
 
-.content {
-  margin: 20px;
-}
-
-h1 {
-  color: white;
-}
-
-h2 {
-  color: white;
-}
-
 p {
-  color: red;
+  color: white;
+  font-family: monospace;
   padding: 30px;
 }
 
-table {
-  border: 1 px solid;
+table{
+  border: 2 px solid;
   width: 100%;
   border-collapse: collapse;
 }
 
-th,
-td {
+th, td {
+  text-align: center;
+}
+
+.dataTables_length, .dataTables_filter, .dataTables_paginate {
+  color: white !important;
+}
+
+.dataTables_length option {
+  background-color: #1a1a1a;
   color: white;
 }

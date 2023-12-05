@@ -32,26 +32,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="styleSheet.css">
+    <link rel="stylesheet" href="Stylesheet/login.css">
+  
 </head>
 
 <body>
+    <div class="login-box">
 
-    <h2>Login</h2>
+        <h2>Login</h2>
 
-    <?php
-    // Display error message if any
-    if (isset($errorMessage)) {
-        echo '<p style="color: red;">' . $errorMessage . '</p>';
-    }
-    ?>
-
-    <form method="post" action="">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <input type="submit" value="Login">
-    </form>
+        <form method="post" action="">
+            <div class="user-box">
+                <input autocomplete="false" type="text" id="username" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input type="password" id="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <input id="submitbutton" type="submit" value="Submit">
+            </input>
+            <p id=errmsg style="color: red"></p>
+            <?php
+            // Display error message if any
+            if (isset($errorMessage)) {
+                ?>
+                <p id=errmsg><?= $errorMessage ?></p>
+                <?php
+            }
+            ?>
+        </form>
+    </div>
 
     <script src="Scripts\storeUsername.js"></script>
 

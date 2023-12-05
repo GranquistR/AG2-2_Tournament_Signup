@@ -29,6 +29,18 @@
 }
 ?>
 
+<?php function enterTournament( $tournament ) // php function to join a tournament
+{
+  // need user
+  $participant = "user1";
+
+  // sql code
+  $sql = "INSERT INTO participatesIn VALUES ($tournament, $participant.participatnID);";
+
+  // execute
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,23 +50,6 @@
   <title>Tournaments</title>
   <script src="/Libraries/jquery-3.7.1.js"></script>
   <link rel="stylesheet" href="Stylesheet/GlobalStyles.css">
-  <style>
-    th,
-    td {
-      text-align: center;
-    }
-
-    .dataTables_length,
-    .dataTables_filter,
-    .dataTables_paginate {
-      color: white !important;
-    }
-
-    .dataTables_length option {
-      background-color: #1a1a1a;
-      color: white;
-    }
-  </style>
   <!-- Datatable Includes -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>

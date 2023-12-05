@@ -1,8 +1,10 @@
-body {
-  background-color: RGB(48, 48, 48);
-}
-
-title, h1, h2, body, label, th, td {
+title,
+h1,
+h2,
+body,
+label,
+th,
+td {
   color: white;
   font-family: monospace;
 }
@@ -13,21 +15,33 @@ p {
   padding: 30px;
 }
 
-table{
+table {
   border: 2 px solid;
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   text-align: center;
 }
 
-.dataTables_length, .dataTables_filter, .dataTables_paginate {
+.dataTables_length,
+.dataTables_filter,
+.dataTables_paginate {
   color: white !important;
 }
 
 .dataTables_length option {
   background-color: #1a1a1a;
   color: white;
+}
+
+.content {
+  margin: 10px;
+}
+
+body {
+  margin: 0px;
+  background-color: #0d1117;
 }

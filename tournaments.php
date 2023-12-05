@@ -97,7 +97,7 @@
           var tournaments = <?php echo getAllTournaments(); ?>;
           console.log(tournaments);
           for (var i = 0; i < tournaments.length; i++) {
-            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button type="submit" formmethod="post">Register</button></td></tr>";
+            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button>Register</button></td></tr>";
             $("#TournamentDatatable tbody").append(tournamentRow);
           }
         </script>

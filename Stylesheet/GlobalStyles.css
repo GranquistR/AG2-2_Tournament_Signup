@@ -4,12 +4,12 @@ body {
 
 title, h1, h2, body, label, th, td {
   color: white;
-  font-family: sans-serif;
+  font-family: monospace;
 }
 
 p {
   color: white;
-  font-family: sans-serif;
+  font-family: monospace;
   padding: 30px;
 }
 

@@ -1,30 +1,20 @@
-title{
-  color: white;
-}
-
 body {
   background-color: RGB(48, 48, 48);
 }
 
-h1 {
+title, h1, h2, body, label, th, td {
   color: white;
-}
-
-h2 {
-  color: white;
+  font-family: sans-serif;
 }
 
 p {
   color: red;
+  font-family: sans-serif;
   padding: 30px;
 }
 
 table{
-  border: 1 px solid;
+  border: 2 px solid;
   width: 100%;
   border-collapse: collapse;
-}
-
-th, td{
-    color: white;
 }

@@ -2,8 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-//The php files in this folder act as endpoints called by javascript
-
 $config = parse_ini_file('../env.config');
 $host = $config['host'];
 $db   = $config['db'];
@@ -18,13 +16,12 @@ $opt = [
   PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 $pdo = new PDO($dsn, $user, $pass, $opt);
+
 //actual sql query here!
-$sql = "select p.username, p.email, p.participantID, i.tournamentID from AgileExpG22.participants p
-join AgileExpG22.participatesIn i on i.participantID = p.participantID
-where tournamentID = $_GET[tournamentId];
-";
+$sql = "SELECT tournamentName FROM tournament WHERE tournamentID = $_GET[tournamentId]";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
+
 
 $results = $stmt->fetchAll();
 //returns the results as json

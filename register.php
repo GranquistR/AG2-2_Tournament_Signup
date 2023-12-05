@@ -1,32 +1,3 @@
-<?php function getTournamentName($tournamentID) //php function that fetches json from sql
-{
-  $config = parse_ini_file('env.config');
-  $host = $config['host'];
-  $db   = $config['db'];
-  $user = $config['user'];
-  $pass = $config['pass'];
-  $charset = 'utf8mb4';
-
-  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-  $opt = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-  ];
-  $pdo = new PDO($dsn, $user, $pass, $opt);
-
-  //actual sql query here!
-  $sql = "SELECT tournamentName FROM tournament WHERE tournamentID = '".$tournamentID."'";
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute();
-
-
-  $results = $stmt->fetchAll();
-  //returns the results as json
-  return json_encode($results);
-}
-?>
-
 <?php function enterTournament($tournament) // php function to join a tournament
 {
   // access db
@@ -68,24 +39,28 @@
   <!-- Datatable Includes -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-
 </head>
 
 <body>
   <!-- Gets the tournament that was selected from the query in the url after the ? -->
   <script>
     $(document).ready(function() {
+      //gets the tournament id from the url
       var param = window.location.href.split('?')[1];
       if (!Number.isInteger(parseInt(param))) {
         window.location.href = "/tournaments.php";
       }
       var tournamentId = parseInt(param);
-      $('.title').append(<?php echo getTournamentName($tournamentId['tournamentId']) ?>);
 
+      //gets the name of the tournament
+      $.get(`PHPRequests/GetTournamentNameById.php?tournamentId=${tournamentId}`, function(title) {
+        $('.title').append(title[0].tournamentName);
+      });
 
       //calls the php as a GET request with params in the url and returns the results as json into the data variable
-      var users = $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
+      $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
         //inserts the json response into the datatable
+        console.log(users);
         for (var i = 0; i < users.length; i++) {
           var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
           $("#UserDatatable tbody").append(row);
@@ -100,8 +75,8 @@
             "orderable": true
           }]
         });
-      });
 
+      });
     });
   </script>
 
@@ -110,8 +85,7 @@
 
   <div class="content">
     <a href="/tournaments.php">Back to Tournaments</a>
-    <h1 class="title">Registering for /h1>
-    Tournament info here
+    <h1 class="title">Registering for </h1>
 
     <!-- registered user table here -->
     <h1>Current Registered Users</h1>

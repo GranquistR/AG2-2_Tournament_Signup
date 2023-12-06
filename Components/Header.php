@@ -3,6 +3,7 @@
 <!-- Super easy to insert at the top of your page with php (See tournaments.php for examples) -->
 <!-- that way no need to duplicate header code for each page :) -->
 
+<link rel="stylesheet" href="Stylesheet/header.css">
 <script>
   //Runs on page load
   $(window).on('pageshow', function() {
@@ -45,59 +46,3 @@
   </div>
 
 </div>
-
-<style>
-  /* All style must start with .header to be scoped to the header only */
-
-  .header .icon {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .header .username {
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 1.5em;
-  }
-
-  .header .userinfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: 10px;
-    border-radius: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .header .userinfo:hover {
-    background-color: #222931;
-    cursor: pointer;
-  }
-
-  .header .logo {
-    font-size: 2.5em;
-    font-weight: bold;
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .header {
-    width: 100vw;
-    height: 70px;
-    background-color: #161b22;
-    margin: 0;
-    color: white;
-    display: flex;
-    flex-direction: row;
-  }
-</style>

@@ -1,0 +1,69 @@
+
+.header .icon {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .header .username {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.5em;
+  }
+
+  .header .userinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .header .userinfo:hover {
+    background-color: #222931;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 0 5px #03e9f4, 0 0 15px #03e9f4;
+    transition: 0.2s;
+    transform: translateY(2px);
+    
+  }
+
+  .header .logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header {
+    width: 100vw;
+    height: 70px;
+    background-color: #161b22;
+    margin: 0;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    box-shadow: 0 0 5px #03e9f4,
+        0 0 15px #03e9f4, 0 0 30px #03e9f4;
+  }
+
+  @keyframes animateGlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }

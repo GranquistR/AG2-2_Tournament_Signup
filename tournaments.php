@@ -29,18 +29,6 @@
 }
 ?>
 
-<?php function enterTournament($tournament) // php function to join a tournament
-{
-  // need user
-  $participant = "user1";
-
-  // sql code
-  $sql = "INSERT INTO participatesIn VALUES ($tournament, $participant.participatnID);";
-
-  // execute
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

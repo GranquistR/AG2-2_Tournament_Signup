@@ -1,19 +1,44 @@
+<?php function getUsers() //php function that fetches json from sql
+{
+  //gets the db login info from the config file
+  //this config file is ignored by git via the .gitignore file
+  //you will have to setup the config file on your own
+  //DM Ryan if you have questions on how it works / how to set it up
+  $config = parse_ini_file('env.config');
+  $host = $config['host'];
+  $db   = $config['db'];
+  $user = $config['user'];
+  $pass = $config['pass'];
+  $charset = 'utf8mb4';
+
+  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+  $opt = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+  ];
+  $pdo = new PDO($dsn, $user, $pass, $opt);
+  //actual sql query here!
+  $sql = "SELECT username FROM participants";
+  $stmt = $pdo->prepare($sql);
+  
+
+  $results = $stmt->execute();
+  //returns the results as json
+  return json_encode($results);
+}
+?>
+
 <?php
-// Sample JSON list of usernames
-$userList = '{
-    "usernames": ["user1", "user2", "user3"]
-}';
-
 // Decode the JSON list
-$userData = json_decode($userList, true);
-
+$userData = array(json_decode(getUsers(), true));
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the entered username
     $enteredUsername = $_POST["username"];
 
     // Check if the entered username is in the list
-    if (in_array($enteredUsername, $userData["usernames"])) {
+    if (in_array($enteredUsername, $userData)) {
         // Redirect to tournaments.php
 
         header("Location: tournaments.php");

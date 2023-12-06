@@ -24,14 +24,15 @@
   
 
   $results = $stmt->execute();
+  $usernames = $stmt->fetchAll(PDO::FETCH_COLUMN);
   //returns the results as json
-  return json_encode($results);
+  return json_encode($usernames);
 }
 ?>
 
 <?php
 // Decode the JSON list
-$userData = array(json_decode(getUsers(), true));
+$userData = json_decode(getUsers(), true);
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the entered username
@@ -40,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the entered username is in the list
     if (in_array($enteredUsername, $userData)) {
         // Redirect to tournaments.php
-
         header("Location: tournaments.php");
         exit();
     } else {

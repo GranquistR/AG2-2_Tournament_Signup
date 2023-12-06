@@ -47,6 +47,7 @@
   }
 
   .header {
+    position: relative;
     width: 100vw;
     height: 70px;
     background-color: #161b22;
@@ -55,15 +56,23 @@
     display: flex;
     flex-direction: row;
     color: #fff;
-    box-shadow: 0 0 5px #03e9f4,
-        0 0 15px #03e9f4, 0 0 30px #03e9f4;
   }
-
+  
+  .rectangle-below {
+    position: absolute;
+    right: -100%;
+    width: 100vw;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: animateGlow 5s linear infinite;
+  }
+  
   @keyframes animateGlow {
     0% {
-      background-position: 0% 50%;
+      right: -100%;
     }
+    75%,
     100% {
-      background-position: 200% 50%;
+      right: 100%;
     }
   }

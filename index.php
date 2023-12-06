@@ -23,7 +23,7 @@
   $stmt = $pdo->prepare($sql);
   
 
-  $results = $stmt->execute();
+  $stmt->execute();
   $usernames = $stmt->fetchAll(PDO::FETCH_COLUMN);
   //returns the results as json
   return json_encode($usernames);

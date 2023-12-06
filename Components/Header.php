@@ -44,5 +44,6 @@
       <img src="Images\LogoutIcon.png" alt="logout Icon" height="30px" />
     </div>
   </div>
-
 </div>
+
+<div class="rectangle-below"></div>

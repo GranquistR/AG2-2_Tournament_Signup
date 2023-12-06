@@ -1,31 +1,3 @@
-<?php function enterTournament($tournament) // php function to join a tournament
-{
-  // access db
-  $config = parse_ini_file('env.config');
-  $host = $config['host'];
-  $db   = $config['db'];
-  $user = $config['user'];
-  $pass = $config['pass'];
-  $charset = 'utf8mb4';
-
-  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-  $opt = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-  ];
-  $pdo = new PDO($dsn, $user, $pass, $opt);
-
-  // need user
-  $participant = "user1";
-
-  // sql code
-  $sql = "INSERT INTO participatesIn VALUES ($tournament, $participant.participatnID);";
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +32,6 @@
       //calls the php as a GET request with params in the url and returns the results as json into the data variable
       $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
         //inserts the json response into the datatable
-        console.log(users);
         for (var i = 0; i < users.length; i++) {
           var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
           $("#UserDatatable tbody").append(row);
@@ -75,7 +46,23 @@
             "orderable": true
           }]
         });
+      });
 
+      //registers the user for the tournament
+      $('.register').click(function() {
+        var participantId = 2; //get user ID from somewhere?
+        //calls the php as a GET request with params in the url and returns the results as json into the data variable
+        $.get(`PHPRequests/AddUserToTournament.php?tournamentId=${tournamentId}&participantId=${participantId}`, function(data) {
+          //if data starts with Failed
+          if (data.startsWith("Failed")) {
+            alert("Failed to join tournament. Please check you are not already registered and try again.");
+          } else {
+            alert("Successfully registered for tournament!");
+            //scuffed reload
+            window.location.href = window.location.href;
+          }
+
+        });
       });
     });
   </script>
@@ -100,6 +87,8 @@
         <!-- Data insterted here -->
       </tbody>
     </table>
+
+    <button class="register">REGISTER</button>
 
   </div>
 </body>

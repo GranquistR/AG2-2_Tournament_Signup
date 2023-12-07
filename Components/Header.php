@@ -28,7 +28,7 @@
 
     //Handles logging out
     $(".header .userinfo").click(function() {
-      localStorage.removeItem("enteredUsername");
+      localStorage.clear();
       window.location.href = "/";
     });
   });

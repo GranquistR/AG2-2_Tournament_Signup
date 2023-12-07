@@ -75,8 +75,8 @@
         <tr>
           <th>Tournament Name</th>
           <th>Description</th>
-          <th>Spots Available</th>
-          <th>Register</th>
+          <th>Max Participants</th>
+          <th>View</th>
         </tr>
       </thead>
       <tbody>
@@ -85,7 +85,7 @@
           var tournaments = <?php echo getAllTournaments(); ?>;
           console.log(tournaments);
           for (var i = 0; i < tournaments.length; i++) {
-            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button><a href='/register.php?" + tournaments[i].tournamentID + "'>Register</a></button></td></tr>";
+            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button><a href='/register.php?" + tournaments[i].tournamentID + "'>View</a></button></td></tr>";
             $("#TournamentDatatable tbody").append(tournamentRow);
           }
         </script>

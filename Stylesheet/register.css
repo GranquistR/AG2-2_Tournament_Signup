@@ -23,15 +23,15 @@
     box-shadow: 0 0 5px #03e9f4,
         0 0 15px #03e9f4,
         0 0 30px #03e9f4;
+    cursor: pointer;
 }
 
 .back-to-tourney {
-    position: absolute;
+    position: relative;
     width: 136px;
     height: 55px;
     padding: 10px;
     line-height: 50px;
-
     margin-top: 37.5px;
     margin-left: -78px;
     bottom: 0%;
@@ -43,4 +43,8 @@
 
 .back-to-tourney:hover {
     color: white;
+}
+
+.title {
+    text-align: center;
 }

@@ -1,32 +1,32 @@
 <?php function getUsers() //php function that fetches json from sql
 {
-  //gets the db login info from the config file
-  //this config file is ignored by git via the .gitignore file
-  //you will have to setup the config file on your own
-  //DM Ryan if you have questions on how it works / how to set it up
-  $config = parse_ini_file('env.config');
-  $host = $config['host'];
-  $db   = $config['db'];
-  $user = $config['user'];
-  $pass = $config['pass'];
-  $charset = 'utf8mb4';
+    //gets the db login info from the config file
+    //this config file is ignored by git via the .gitignore file
+    //you will have to setup the config file on your own
+    //DM Ryan if you have questions on how it works / how to set it up
+    $config = parse_ini_file('env.config');
+    $host = $config['host'];
+    $db = $config['db'];
+    $user = $config['user'];
+    $pass = $config['pass'];
+    $charset = 'utf8mb4';
 
-  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-  $opt = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-  ];
-  $pdo = new PDO($dsn, $user, $pass, $opt);
-  //actual sql query here!
-  $sql = "SELECT username FROM participants";
-  $stmt = $pdo->prepare($sql);
-  
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+    $pdo = new PDO($dsn, $user, $pass, $opt);
+    //actual sql query here!
+    $sql = "SELECT username FROM participants";
+    $stmt = $pdo->prepare($sql);
 
-  $stmt->execute();
-  $usernames = $stmt->fetchAll(PDO::FETCH_COLUMN);
-  //returns the results as json
-  return json_encode($usernames);
+
+    $stmt->execute();
+    $usernames = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    //returns the results as json
+    return json_encode($usernames);
 }
 ?>
 
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="Stylesheet/login.css">
-  
+
 </head>
 
 <body>

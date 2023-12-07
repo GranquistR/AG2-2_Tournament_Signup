@@ -1,0 +1,46 @@
+.register {
+    position: relative;
+    display: flex;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-transform: uppercase;
+    overflow-x: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    background: rgb(0, 0, 0);
+    box-shadow: 0 0 5px #03e9f4;
+    margin: auto;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 7px;
+}
+
+.register:hover {
+    background: #03e9f4;
+    color: #000000;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+        0 0 15px #03e9f4,
+        0 0 30px #03e9f4;
+}
+
+.back-to-tourney {
+    position: absolute;
+    width: 136px;
+    height: 55px;
+    padding: 10px;
+    line-height: 50px;
+
+    margin-top: 37.5px;
+    margin-left: -78px;
+    bottom: 0%;
+    left: 50%;
+    display: inline-flex;
+    text-align: center;
+    color:#03e9f4;
+}
+
+.back-to-tourney:hover {
+    color: white;
+}

@@ -17,7 +17,7 @@
     justify-content: center;
     margin-left: auto;
     margin-right: 10px;
-    border-radius: 30px;
+    border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 10px;
@@ -63,16 +63,16 @@
     right: -100%;
     width: 100vw;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
+    background: linear-gradient(90deg, transparent, #03e8f4be);
     animation: animateGlow 5s linear infinite;
   }
   
   @keyframes animateGlow {
     0% {
-      right: -100%;
+      right: 100%;
     }
     75%,
     100% {
-      right: 100%;
+      right: -100%;
     }
   }

@@ -13,7 +13,7 @@
       alert("You must login to view this page");
       window.location.href = "/";
     } else {
-      $(".username").append(localStorage.getItem('enteredUsername'));
+      $(".username").html(localStorage.getItem('enteredUsername'));
     }
 
     //Handles swapping between the user icon and the logout icon

@@ -24,17 +24,28 @@
         window.location.href = "/tournaments.php";
       }
       var tournamentId = parseInt(param);
+      var capacity = 0;
 
-      //gets the name of the tournament
-      $.get(`PHPRequests/GetTournamentNameById.php?tournamentId=${tournamentId}`, function(title) {
+      //gets the name and capacity of the tournament
+      $.get(`PHPRequests/GetTournamentNameCapacityById.php?tournamentId=${tournamentId}`, function(title) {
         $('.title').append(title[0].tournamentName);
+        capacity = title[0].capacity;
       });
 
       //calls the php as a GET request with params in the url and returns the results as json into the data variable
       $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
+        $('.numUsers').append(users.length + "/" + capacity);
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
-          var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
+          if (users[i].username == localStorage.getItem('enteredUsername')) {
+            var row = "<tr><td style='color: yellow;'>" + users[i].username + "</td><td style='color: yellow;'>" + users[i].email + "</td></tr>";
+          }
+          else {
+            var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
+          }
+          if (users[i].username == localStorage.getItem('enteredUsername')) {
+            
+          }
           $("#UserDatatable tbody").append(row);
         }
         //sets up the datatable and options
@@ -72,10 +83,10 @@
   <?php include 'Components/header.php'; ?>
 
   <div class="content">
-    <h1 class="title">Registering for </h1>
+    <h1 class="title"></h1>
 
     <!-- registered user table here -->
-    <h1>Current Registered Users</h1>
+    <h1 class="numUsers">Current Registered Users: </h1>
     <table id="UserDatatable" class="display">
       <thead>
         <tr>
@@ -90,10 +101,6 @@
 
     <button class="register">REGISTER</button>
     <a class="back-to-tourney" href="/tournaments.php">Back to Tournaments</a>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
   </div>
 </body>
 

@@ -18,7 +18,7 @@ $opt = [
 $pdo = new PDO($dsn, $user, $pass, $opt);
 
 //actual sql query here!
-$sql = "SELECT tournamentName FROM tournament WHERE tournamentID = $_GET[tournamentId]";
+$sql = "SELECT tournamentName, capacity FROM tournament WHERE tournamentID = $_GET[tournamentId]";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 

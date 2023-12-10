@@ -21,9 +21,11 @@
   File > Preferences > Settings  
   Search and Uncheck the 'PHP > Validate: Enable' setting  
   Search and edit the 'PHP > Validate: Executable Path' setting to include the following lines withing the curly braces:   
+  
     "php.validate.executablePath": "C:/xampp/php/php.exe",
     "phpserver.phpPath": "C:\\xampp\\php\\php.exe",
     "phpserver.phpConfigPath": "C:\\xampp\\php\\php.ini"
+
   *Note the path to php.exe may be different on you computer*  
 
   ### Create you env.config

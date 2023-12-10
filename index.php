@@ -20,7 +20,6 @@
                 $.get(`PHPRequests/LoginByUsername.php?usernameAttempt=${username}`, function(data) {
                     console.log(data)
                     if (data == "[]") {
-                        alert("Failed");
                         localStorage.clear();
                     } else {
                         localStorage.clear();

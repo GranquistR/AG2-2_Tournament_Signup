@@ -33,6 +33,7 @@
   *note the grayed out appreatrance of the file to indicate git will ignore the file while pushing*  
   Go into the created file  
   Enter the DB connection settings in this format  
+  
     host = 'IP_HERE'
     db = 'DB_HERE'
     user = 'USER_HERE'

@@ -18,6 +18,8 @@
   <!-- Gets the tournament that was selected from the query in the url after the ? -->
   <script>
     $(document).ready(function() {
+      $('.content').hide();
+      $('.ring').show();
       //gets the tournament id from the url
       var param = window.location.href.split('?')[1];
       if (!Number.isInteger(parseInt(param))) {
@@ -50,6 +52,8 @@
           }
           $("#UserDatatable tbody").append(row);
         }
+        $('.ring').hide();
+        $('.content').show().fadeIn(1000);
         //sets up the datatable and options
         $('#UserDatatable').DataTable({
           "paging": true,
@@ -59,6 +63,7 @@
             "targets": [1],
             "orderable": true
           }]
+          
         });
       });
 
@@ -87,7 +92,7 @@
 
   <!-- import header component -->
   <?php include 'Components/header.php'; ?>
-
+  <div class="ring">Loading</div>
   <div class="content">
     <h1 class="title"></h1>
 
@@ -106,8 +111,6 @@
     </table>
 
     <button class="register">REGISTER</button>
-  </div>
-  <div class="relativeParent">
     <a class="back-to-tourney" href="/tournaments.php">Back to Tournaments</a>
   </div>
 </body>

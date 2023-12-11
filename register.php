@@ -25,6 +25,7 @@
       }
       var tournamentId = parseInt(param);
       var capacity = 0;
+      var currRegistered = 0;
 
       //gets the name and capacity of the tournament
       $.get(`PHPRequests/GetTournamentNameCapacityById.php?tournamentId=${tournamentId}`, function(title) {
@@ -37,6 +38,7 @@
         $('.numUsers').append(users.length + "/" + capacity);
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
+          currRegistered++;
           if (users[i].username == localStorage.getItem('enteredUsername')) {
             var row = "<tr><td style='color: yellow;'>" + users[i].username + "</td><td style='color: yellow;'>" + users[i].email + "</td></tr>";
           }
@@ -62,6 +64,10 @@
 
       //registers the user for the tournament
       $('.register').click(function() {
+        if (currRegistered >= capacity) {
+          alert("Tournament is full!");
+          return;
+        }
         var participantId = localStorage.getItem('participantId'); //get user ID from somewhere?
         //calls the php as a GET request with params in the url and returns the results as json into the data variable
         $.get(`PHPRequests/AddUserToTournament.php?tournamentId=${tournamentId}&participantId=${participantId}`, function(data) {
@@ -100,6 +106,8 @@
     </table>
 
     <button class="register">REGISTER</button>
+  </div>
+  <div class="relativeParent">
     <a class="back-to-tourney" href="/tournaments.php">Back to Tournaments</a>
   </div>
 </body>

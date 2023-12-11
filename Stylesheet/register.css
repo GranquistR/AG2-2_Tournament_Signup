@@ -26,8 +26,15 @@
     cursor: pointer;
 }
 
-.back-to-tourney {
+.relativeParent{
     position: relative;
+    width: 100vw;
+    height: 8vh;
+   
+}
+
+.back-to-tourney {
+    position: absolute;
     width: 136px;
     height: 55px;
     padding: 10px;
@@ -46,5 +53,9 @@
 }
 
 .title {
+    text-align: center;
+}
+
+.numUsers {
     text-align: center;
 }

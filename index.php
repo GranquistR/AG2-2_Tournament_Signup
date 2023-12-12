@@ -16,7 +16,6 @@
         $(document).ready(function() {
             $("#submitbutton").click(function() {
                 var username = $("#usernameInput").val();
-                alert(username);
                 $.get(`PHPRequests/LoginByUsername.php?usernameAttempt=${username}`, function(data) {
                     console.log(data)
                     if (data == "[]") {

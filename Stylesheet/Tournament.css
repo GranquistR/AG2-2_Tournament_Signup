@@ -51,20 +51,11 @@ body {
   background-color: #0d1117;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 
-/* Apply animation to specific elements */
-h1, h2, p, th, td {
-  animation: fadeIn 1s ease-in-out;
-}
 .viewbutton {
   position: relative;
   display: flex;
-  padding: 10px 20px;
+  padding: 5px 15px;
   color: #ffffff;
   font-size: 12px;
   text-transform: uppercase;
@@ -74,7 +65,7 @@ h1, h2, p, th, td {
   background: rgb(0, 0, 0);
   box-shadow: 0 0 5px #03e9f4;
   margin: auto;
-  margin-top: 5px;
+  margin-top: 3px;
   border-style: none;
   border-radius: 7px;
 }
@@ -84,8 +75,7 @@ h1, h2, p, th, td {
   color: #000000;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4,
-      0 0 15px #03e9f4,
-      0 0 30px #03e9f4;
+      0 0 10px #03e9f4;
 }
 a {
   text-decoration: none;

@@ -68,7 +68,7 @@
           $('#registerButton').prop('disabled', true);
           // make the pointer not work
           $('#registerButton').css('cursor', 'not-allowed');
-          $('#registerButton').html("You are already registered!");
+          $('#registerButton').html("You are registered!");
         }
         $('.ring').fadeOut(500);
         $('.content').fadeIn(1000);
@@ -98,7 +98,6 @@
           if (data.startsWith("Failed")) {
             alert("Failed to join tournament. Please check you are not already registered and try again.");
           } else {
-            alert("Successfully registered for tournament!");
             //scuffed reload
             window.location.href = window.location.href;
           }

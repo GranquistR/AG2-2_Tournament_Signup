@@ -19,26 +19,43 @@
 <body>
   <!-- Gets the tournament that was selected from the query in the url after the ? -->
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
+      $('.content').hide();
+      $('.ring').show();
       //gets the tournament id from the url
       var param = window.location.href.split('?')[1];
       if (!Number.isInteger(parseInt(param))) {
         window.location.href = "/tournaments.php";
       }
       var tournamentId = parseInt(param);
+      var capacity = 0;
+      var currRegistered = 0;
 
-      //gets the name of the tournament
-      $.get(`PHPRequests/GetTournamentNameById.php?tournamentId=${tournamentId}`, function (title) {
+      //gets the name and capacity of the tournament
+      $.get(`PHPRequests/GetTournamentNameCapacityById.php?tournamentId=${tournamentId}`, function(title) {
         $('.title').append(title[0].tournamentName);
+        capacity = title[0].capacity;
       });
 
       //calls the php as a GET request with params in the url and returns the results as json into the data variable
-      $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function (users) {
+      $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
+        $('.numUsers').append(users.length + "/" + capacity);
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
-          var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
+          currRegistered++;
+          if (users[i].username == localStorage.getItem('enteredUsername')) {
+            var row = "<tr><td style='color: yellow;'>" + users[i].username + "</td><td style='color: yellow;'>" + users[i].email + "</td></tr>";
+          }
+          else {
+            var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
+          }
+          if (users[i].username == localStorage.getItem('enteredUsername')) {
+            
+          }
           $("#UserDatatable tbody").append(row);
         }
+        $('.ring').fadeOut(500);
+        $('.content').fadeIn(1000);
         //sets up the datatable and options
         $('#UserDatatable').DataTable({
           "paging": true,
@@ -48,14 +65,19 @@
             "targets": [1],
             "orderable": true
           }]
+          
         });
       });
 
       //registers the user for the tournament
-      $('.register').click(function () {
-        var participantId = 2; //get user ID from somewhere?
+      $('.register').click(function() {
+        if (currRegistered >= capacity) {
+          alert("Tournament is full!");
+          return;
+        }
+        var participantId = localStorage.getItem('participantId'); //get user ID from somewhere?
         //calls the php as a GET request with params in the url and returns the results as json into the data variable
-        $.get(`PHPRequests/AddUserToTournament.php?tournamentId=${tournamentId}&participantId=${participantId}`, function (data) {
+        $.get(`PHPRequests/AddUserToTournament.php?tournamentId=${tournamentId}&participantId=${participantId}`, function(data) {
           //if data starts with Failed
           if (data.startsWith("Failed")) {
             alert("Failed to join tournament. Please check you are not already registered and try again.");
@@ -72,12 +94,12 @@
 
   <!-- import header component -->
   <?php include 'Components/header.php'; ?>
-
+  <div class="ring">Loading</div>
   <div class="content">
-    <h1 class="title">Registering for </h1>
+    <h1 class="title"></h1>
 
     <!-- registered user table here -->
-    <h1>Current Registered Users</h1>
+    <h1 class="numUsers">Current Registered Users: </h1>
     <table id="UserDatatable" class="display">
       <thead>
         <tr>
@@ -107,11 +129,7 @@
     </div>
     <script src="Scripts/confirmModal.js"></script>
 
-    <a class = "back-to-tourney" href="/tournaments.php">Back to Tournaments</a>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+    <a class="back-to-tourney" href="/tournaments.php">Back to Tournaments</a>
   </div>
 </body>
 

@@ -56,23 +56,6 @@
     display: flex;
     flex-direction: row;
     color: #fff;
-  }
-  
-  .rectangle-below {
-    position: absolute;
-    right: -100%;
-    width: 100vw;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03e8f4be);
-    animation: animateGlow 5s linear infinite;
-  }
-  
-  @keyframes animateGlow {
-    0% {
-      right: 100%;
-    }
-    75%,
-    100% {
-      right: -100%;
-    }
+    box-shadow: 0 0 5px #03e9f4,
+        0 0 15px #03e9f4;
   }

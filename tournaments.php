@@ -47,7 +47,6 @@
 
   <!-- import header component -->
   <?php include 'Components/header.php'; ?>
-
   <div class="content">
     <h1>Tournaments</h1>
     <h2>Please select a tournament</h2>

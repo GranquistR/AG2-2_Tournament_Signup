@@ -64,7 +64,10 @@
           "columnDefs": [{
             "targets": [3],
             "orderable": true
-          }]
+          }],
+          "language": {
+            "emptyTable": "No tournaments available"
+          }
         });
       });
     </script>

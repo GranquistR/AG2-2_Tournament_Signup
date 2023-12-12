@@ -80,8 +80,10 @@
           "columnDefs": [{
             "targets": [1],
             "orderable": true
-          }]
-
+          }],
+          "language": {
+            "emptyTable": "No users registered for this tournament"
+          }
         });
       });
 

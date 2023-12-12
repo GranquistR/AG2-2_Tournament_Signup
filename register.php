@@ -54,6 +54,13 @@
           }
           $("#UserDatatable tbody").append(row);
         }
+        if (currRegistered >= capacity) {
+          // make the register button not work
+          $('#registerButton').prop('disabled', true);
+          // make the pointer not work
+          $('#registerButton').css('cursor', 'not-allowed');
+          $('#registerButton').html("Tournament is full!");
+        }
         $('.ring').fadeOut(500);
         $('.content').fadeIn(1000);
         //sets up the datatable and options

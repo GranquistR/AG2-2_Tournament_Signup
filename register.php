@@ -70,7 +70,7 @@
       });
 
       //registers the user for the tournament
-      $('.register').click(function() {
+      $('#confirmButton').click(function() {
         if (currRegistered >= capacity) {
           alert("Tournament is full!");
           return;
@@ -112,18 +112,14 @@
       </tbody>
     </table>
 
-    <button id="registerButton">REGISTER HERE</button>
+    <button class="register" id="registerButton">REGISTER HERE</button>
     <div id="confirmModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">&times;</span>
           <h2>Confirm Tournament Registration</h2>
-        </div>
-        <div class="modal-body">
-          <p>Press the button below to confirm registration</p>
-        </div>
-        <div class="modal-footer">
-          <button class="register">Register</button>
+       
+          <button class="register" id="confirmButton">Register</button>
         </div>
       </div>
     </div>

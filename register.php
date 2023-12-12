@@ -52,8 +52,8 @@
           }
           $("#UserDatatable tbody").append(row);
         }
-        $('.ring').hide();
-        $('.content').show().fadeIn(1000);
+        $('.ring').fadeOut(500);
+        $('.content').fadeIn(1000);
         //sets up the datatable and options
         $('#UserDatatable').DataTable({
           "paging": true,

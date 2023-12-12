@@ -72,7 +72,18 @@ body {
 }
 
 #submitbutton {
-    background:#03e9f4; 
+    background:rgba(0, 0, 0, .6);;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
     border:none;
     cursor: pointer;
 }
@@ -88,7 +99,7 @@ body {
     overflow: hidden;
     transition: .5s;
     margin-top: 40px;
-    letter-spacing: 4px
+    letter-spacing: 4px;
 }
 
 .login-box #submitbutton:hover {

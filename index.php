@@ -42,7 +42,7 @@
             <label>Username</label>
         </div>
         <div class="user-box">
-            <input> </input>
+            <input type="password"> </input>
             <label>Password</label>
         </div>
         <button id="submitbutton">

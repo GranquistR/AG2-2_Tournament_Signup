@@ -38,11 +38,11 @@
         <h2>Login</h2>
 
         <div class="user-box">
-            <input id="usernameInput"> </input>
+            <input id="usernameInput" name="username" required> </input>
             <label>Username</label>
         </div>
         <div class="user-box">
-            <input type="password"> </input>
+            <input type="password" id="password" name="password" required> </input>
             <label>Password</label>
         </div>
         <button id="submitbutton">

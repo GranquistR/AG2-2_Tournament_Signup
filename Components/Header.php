@@ -8,6 +8,10 @@
   //Runs on page load
   $(window).on('pageshow', function() {
 
+    $("#homelink").click(function() {
+      window.location.href = "/tournaments.php";
+    });
+
     //handles setting the username in the header or redirects to the login page
     if (localStorage.getItem('enteredUsername') == null) {
       alert("You must login to view this page");
@@ -34,7 +38,7 @@
   });
 </script>
 <div class="header">
-  <div class="logo">AG2-2 Tournament Signup</div>
+  <div class="logo" id='homelink'>AG2-2 Tournament Signup</div>
   <div class="userinfo">
     <div class="username"></div>
     <div class="icon user">

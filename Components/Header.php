@@ -49,5 +49,3 @@
     </div>
   </div>
 </div>
-
-<div class="rectangle-below"></div>

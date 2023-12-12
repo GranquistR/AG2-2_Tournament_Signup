@@ -37,9 +37,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tournaments</title>
   <script src="/Libraries/jquery-3.7.1.js"></script>
-  <link rel="stylesheet" href="Stylesheet/Tournament.css">
+ 
   <!-- Datatable Includes -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+  <link rel="stylesheet" href="Stylesheet/Tournament.css">
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 </head>
 
@@ -84,7 +85,7 @@
           var tournaments = <?php echo getAllTournaments(); ?>;
           console.log(tournaments);
           for (var i = 0; i < tournaments.length; i++) {
-            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button><a href='/register.php?" + tournaments[i].tournamentID + "'>View</a></button></td></tr>";
+            var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><button class='viewbutton'><a href='/register.php?" + tournaments[i].tournamentID + "'>View</a></button></td></tr>";
             $("#TournamentDatatable tbody").append(tournamentRow);
           }
         </script>

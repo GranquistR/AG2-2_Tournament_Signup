@@ -1,4 +1,5 @@
 title,
+.viewbutton,
 h1,
 h2,
 body,
@@ -9,7 +10,9 @@ td {
   font-family: monospace;
   overflow-x: hidden;
 }
-
+table tr:nth-child(even) {
+  background: #01181d !important; /* Set a background color for even rows */
+}
 p {
   color: white;
   font-family: monospace;
@@ -26,6 +29,7 @@ th,
 td {
   text-align: center;
 }
+
 
 .dataTables_length,
 .dataTables_filter,
@@ -45,4 +49,45 @@ td {
 body {
   margin: 0px;
   background-color: #0d1117;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Apply animation to specific elements */
+h1, h2, p, th, td {
+  animation: fadeIn 1s ease-in-out;
+}
+.viewbutton {
+  position: relative;
+  display: flex;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 12px;
+  text-transform: uppercase;
+  overflow-x: hidden;
+  transition: .5s;
+  letter-spacing: 4px;
+  background: rgb(0, 0, 0);
+  box-shadow: 0 0 5px #03e9f4;
+  margin: auto;
+  margin-top: 5px;
+  border-style: none;
+  border-radius: 7px;
+}
+
+.viewbutton:hover {
+  background: #03e9f4;
+  color: #000000;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+      0 0 15px #03e9f4,
+      0 0 30px #03e9f4;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
 }

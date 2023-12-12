@@ -35,12 +35,17 @@
       //gets the name and capacity of the tournament
       $.get(`PHPRequests/GetTournamentNameCapacityById.php?tournamentId=${tournamentId}`, function(title) {
         $('.title').append(title[0].tournamentName);
-        capacity = title[0].capacity;
+
+        capacity = title[0].capacity; 
+        $('.numUsers').append(capacity);
       });
 
       //calls the php as a GET request with params in the url and returns the results as json into the data variable
       $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
-        $('.numUsers').append(users.length + "/" + capacity);
+        if (capacity != 0) {
+          $('.numUsers').prepend("Current Registered Users: " + users.length + "/");
+       // $('.numUsers').append(users.length + "/" + capacity);
+        }
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
           currRegistered++;
@@ -116,7 +121,7 @@
     <h1 class="title"></h1>
 
     <!-- registered user table here -->
-    <h1 class="numUsers">Current Registered Users: </h1>
+    <h1 class="numUsers"></h1>
     <table id="UserDatatable" class="display">
       <thead>
         <tr>

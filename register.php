@@ -30,6 +30,7 @@
       var tournamentId = parseInt(param);
       var capacity = 0;
       var currRegistered = 0;
+      var userIsRegistered = false;
 
       //gets the name and capacity of the tournament
       $.get(`PHPRequests/GetTournamentNameCapacityById.php?tournamentId=${tournamentId}`, function(title) {
@@ -43,14 +44,15 @@
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
           currRegistered++;
+
           if (users[i].username == localStorage.getItem('enteredUsername')) {
+            userIsRegistered = true;
             var row = "<tr><td style='color: yellow;'>" + users[i].username + "</td><td style='color: yellow;'>" + users[i].email + "</td></tr>";
-          }
-          else {
+          } else {
             var row = "<tr><td>" + users[i].username + "</td><td>" + users[i].email + "</td></tr>";
           }
           if (users[i].username == localStorage.getItem('enteredUsername')) {
-            
+
           }
           $("#UserDatatable tbody").append(row);
         }
@@ -60,6 +62,13 @@
           // make the pointer not work
           $('#registerButton').css('cursor', 'not-allowed');
           $('#registerButton').html("Tournament is full!");
+        }
+        if (userIsRegistered) {
+          // make the register button not work
+          $('#registerButton').prop('disabled', true);
+          // make the pointer not work
+          $('#registerButton').css('cursor', 'not-allowed');
+          $('#registerButton').html("You are already registered!");
         }
         $('.ring').fadeOut(500);
         $('.content').fadeIn(1000);
@@ -72,7 +81,7 @@
             "targets": [1],
             "orderable": true
           }]
-          
+
         });
       });
 
@@ -125,7 +134,7 @@
         <div class="modal-header">
           <span class="close">&times;</span>
           <h2>Confirm Tournament Registration</h2>
-       
+
           <button class="register" id="confirmButton">Register</button>
         </div>
       </div>

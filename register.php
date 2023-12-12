@@ -12,6 +12,8 @@
   <!-- Datatable Includes -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+  <!-- Modal Styling -->
+  <link rel="stylesheet" href="Stylesheet/confirmModal.css">
 </head>
 
 <body>
@@ -88,7 +90,23 @@
       </tbody>
     </table>
 
-    <button class="register">REGISTER</button>
+    <button id="registerButton">REGISTER HERE</button>
+    <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Confirm Tournament Registration</h2>
+        </div>
+        <div class="modal-body">
+          <p>Press the button below to confirm registration</p>
+        </div>
+        <div class="modal-footer">
+          <button class="register">Register</button>
+        </div>
+      </div>
+    </div>
+    <script src="Scripts/confirmModal.js"></script>
+
     <a class = "back-to-tourney" href="/tournaments.php">Back to Tournaments</a>
     <span></span>
     <span></span>

@@ -37,7 +37,7 @@
         <h2>Login</h2>
 
         <div class="user-box">
-            <input id="usernameInput" name="username" required> </input>
+            <input autocomplete="new-password" id="usernameInput" name="username" required> </input>
             <label>Username</label>
         </div>
         <div class="user-box">

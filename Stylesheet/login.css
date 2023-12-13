@@ -9,13 +9,6 @@ body {
     background-color: #0d1117;
 }
 
-#errmsg {
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 0%;
-    color: red;
-}
-
 .login-box {
     position: absolute;
     top: 50%;
@@ -72,10 +65,9 @@ body {
 }
 
 #submitbutton {
-    background:rgba(0, 0, 0, .6);;
+    background: none;
     position: relative;
     display: inline-block;
-    width: 100%;
     padding: 10px 20px;
     color: #03e9f4;
     font-size: 16px;
@@ -85,22 +77,8 @@ body {
     transition: .5s;
     margin-top: 40px;
     letter-spacing: 4px;
-    border:none;
+    border-style: none;
     cursor: pointer;
-}
-
-.login-box form #submitbutton {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #03e9f4;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px;
 }
 
 .login-box #submitbutton:hover {

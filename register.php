@@ -112,7 +112,7 @@
   </script>
 
   <!-- import header component -->
-  <?php include 'Components/header.php'; ?>
+  <?php include 'Components/Header.php'; ?>
   <div class="ring">Loading</div>
   <div class="content">
     <h1 class="title"></h1>

@@ -86,7 +86,6 @@
         <script>
           //inserts the json response into the datatable
           var tournaments = <?php echo getAllTournaments(); ?>;
-          console.log(tournaments);
           for (var i = 0; i < tournaments.length; i++) {
             var tournamentRow = "<tr><td>" + tournaments[i].tournamentName + "</td><td>" + tournaments[i].description + "</td><td>" + tournaments[i].capacity + "</td><td><a class='viewbutton' href='/register.php?" + tournaments[i].tournamentID + "'>View</a></td></tr>";
             $("#TournamentDatatable tbody").append(tournamentRow);

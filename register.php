@@ -34,7 +34,6 @@
 
       //gets the tournament and user info from the database
       $.get(`PHPRequests/GetTournamentByID.php?tournamentId=${tournamentId}`, function(data) {
-        console.log(data);
         title = data[1];
         users = data[0];
 
@@ -44,7 +43,6 @@
         $('.numUsers').append(capacity);
 
         //user info stuff
-        console.log(users);
         $('.numUsers').prepend("Current Registered Users: " + users.length + "/");
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {

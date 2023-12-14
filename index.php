@@ -17,7 +17,6 @@
             $("#submitbutton").click(function() {
                 var username = $("#usernameInput").val();
                 $.get(`PHPRequests/LoginByUsername.php?usernameAttempt=${username}`, function(data) {
-                    console.log(data)
                     if (data == "[]") {
                         localStorage.clear();
                         $("#errmsg").show();

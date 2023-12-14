@@ -33,7 +33,7 @@
       var userIsRegistered = false;
 
       //gets the tournament and user info from the database
-      $.get(`PHPRequests/GetTournamentById.php?tournamentId=${tournamentId}`, function(data) {
+      $.get(`PHPRequests/GetTournamentByID.php?tournamentId=${tournamentId}`, function(data) {
         console.log(data);
         title = data[1];
         users = data[0];

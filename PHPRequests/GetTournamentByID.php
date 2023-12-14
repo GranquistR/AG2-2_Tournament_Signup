@@ -11,6 +11,8 @@ $user = $config['user'];
 $pass = $config['pass'];
 $charset = 'utf8mb4';
 
+//User info
+
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $opt = [
   PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -25,7 +27,23 @@ where tournamentID = $_GET[tournamentId];
 ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
+$users = $stmt->fetchAll();
+//tournament info
 
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$opt = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES   => false,
+];
+$pdo = new PDO($dsn, $user, $pass, $opt);
+
+//actual sql query here!
+$sql = "SELECT tournamentName, capacity FROM tournament WHERE tournamentID = $_GET[tournamentId]";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 $results = $stmt->fetchAll();
-//returns the results as json
-echo json_encode($results);
+
+
+//echos users and results in json
+echo json_encode(array($users, $results));

@@ -32,17 +32,20 @@
       var currRegistered = 0;
       var userIsRegistered = false;
 
-      //gets the name and capacity of the tournament
-      $.get(`PHPRequests/GetTournamentNameCapacityById.php?tournamentId=${tournamentId}`, function(title) {
+      //gets the tournament and user info from the database
+      $.get(`PHPRequests/GetTournamentById.php?tournamentId=${tournamentId}`, function(data) {
+        console.log(data);
+        title = data[1];
+        users = data[0];
+
+        //Tournament info stuff
         $('.title').append(title[0].tournamentName);
-
-        capacity = title[0].capacity; 
+        capacity = title[0].capacity;
         $('.numUsers').append(capacity);
-      });
 
-      //calls the php as a GET request with params in the url and returns the results as json into the data variable
-      $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
-          $('.numUsers').prepend("Current Registered Users: " + users.length + "/");
+        //user info stuff
+        console.log(users);
+        $('.numUsers').prepend("Current Registered Users: " + users.length + "/");
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
           currRegistered++;
@@ -89,7 +92,7 @@
         });
       });
 
-      //registers the user for the tournament
+      //registers user button functionality
       $('#confirmButton').click(function() {
         if (currRegistered >= capacity) {
           alert("Tournament is full!");
@@ -105,7 +108,6 @@
             //scuffed reload
             window.location.href = window.location.href;
           }
-
         });
       });
     });

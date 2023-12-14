@@ -42,10 +42,7 @@
 
       //calls the php as a GET request with params in the url and returns the results as json into the data variable
       $.get(`PHPRequests/GetRegisteredUserByTournamentID.php?tournamentId=${tournamentId}`, function(users) {
-        if (capacity != 0) {
           $('.numUsers').prepend("Current Registered Users: " + users.length + "/");
-       // $('.numUsers').append(users.length + "/" + capacity);
-        }
         //inserts the json response into the datatable
         for (var i = 0; i < users.length; i++) {
           currRegistered++;

@@ -20,6 +20,7 @@
                     console.log(data)
                     if (data == "[]") {
                         localStorage.clear();
+                        $("#errmsg").show();
                     } else {
                         localStorage.clear();
                         var userInfo = JSON.parse(data);
@@ -47,7 +48,7 @@
         <button id="submitbutton">
             Submit
         </button>
-
+        <p id=errmsg>Invalid Login. Please Try Again.</p>
 
     </div>
 
